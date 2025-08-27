@@ -1,0 +1,10 @@
+.venv/
+.airflow/
+__pycache__/
+.DS_Store
+dbt_packages/
+target/
+warehouse/
+data/*.csv
+
+
