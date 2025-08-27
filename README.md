@@ -8,12 +8,12 @@ This system monitors customer account balances each day and alerts the operation
 - Invoices: daily financial transactions (payments, credits, refunds) recorded per customer
 
 ### How balances are calculated
-- We review each customer’s transactions for a given day and convert all amounts into USD so we can compare customers consistently.
+- We review each customer’s transactions for a given day and convert all amounts into USD so we can compare the transactions and daily balances consistently.
 - We then apply a simple sign rule to each transaction:
   - Negative (reduces balance): paid, refund, refunded
   - Positive (increases balance): credited
   - Ignored for balance math: open, pending, awaiting_payment, processing, failed, skipped, unpayable, cancelled/canceled
-- We sum the signed amounts for the day and roll them up over time to get each customer’s daily balance. This gives a consistent, cumulative view of balance by day.
+- We sum the signed amounts for the day and roll them up over time to get each organization’s daily balance. This gives a consistent, cumulative view of balance by day.
 
 ### When we alert
 - Every day, we compare today’s balance to yesterday’s balance for each customer.
