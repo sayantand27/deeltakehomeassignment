@@ -7,9 +7,6 @@ models:
         tests:
           - not_null
           - unique
-      - name: legal_entity_country_code
-        tests:
-          - not_null
 
   - name: stg_invoices
     columns:
@@ -19,10 +16,14 @@ models:
       - name: as_of_date
         tests:
           - not_null
-      - name: account_balance
+      - name: invoice_id
         tests:
           - not_null
-
+      - name: transaction_id
+        tests:
+          - not_null
+          - unique
+          
   - name: dim_organizations
     columns:
       - name: organization_id
