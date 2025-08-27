@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: stg_organizations
+    columns:
+      - name: organization_id
+        tests:
+          - not_null
+          - unique
+      - name: legal_entity_country_code
+        tests:
+          - not_null
+
+  - name: stg_invoices
+    columns:
+      - name: organization_id
+        tests:
+          - not_null
+      - name: as_of_date
+        tests:
+          - not_null
+      - name: account_balance
+        tests:
+          - not_null
+
+  - name: dim_organizations
+    columns:
+      - name: organization_id
+        tests:
+          - not_null
+          - unique
+
+  - name: fact_daily_balances
+    columns:
+      - name: organization_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_organizations')
+              field: organization_id
+      - name: date
+        tests:
+          - not_null
+      - name: daily_balance
+        tests:
+          - not_null
+
+
